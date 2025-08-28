@@ -5,8 +5,8 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.remote.webelement import WebElement
 import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
-from config import get_login_data
-from event import Event
+from paris_saclay_edt_parser.config import get_login_data
+from paris_saclay_edt_parser.event import Event
 
 #CONFIGURATION
 
