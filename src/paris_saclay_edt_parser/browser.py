@@ -17,13 +17,16 @@ chrome_options.add_argument(f'--user-data-dir={USER_DATA_PATH}')
 chrome_options.add_argument('--profile-directory=Default') 
 chrome_options.add_argument('--disable-blink-features=AutomationControlled')
 
+driver = uc.Chrome(options=chrome_options)
+
+
 
 class Brwsr:
 # MAIN SCRIPT
     def __init__(self):
         print("Initializing driver with your REAL Chrome profile...")
         print("!!! Make sure all other Chrome windows are closed !!!")
-        self.driver = uc.Chrome(options=chrome_options)
+        self.driver = driver
 
     def finish(self):
         if self.driver:
@@ -82,7 +85,6 @@ class Brwsr:
             print(f"\nAn error occurred: {e}")
             if "user data directory is already in use" in str(e).lower():
                 print("\nLOCKING ERROR: You did not close all Google Chrome windows before running the script.")
-            self.finish()
 
     def get_events_elems(self) -> list[WebElement]:
         elems = self.driver.find_elements(By.XPATH, '/html/body/div[2]/div[6]/div[2]/div/table/tbody/tr/td/div[2]/div/div[3]/table/tbody/tr/td[2]/div/div[2]/a')
@@ -107,6 +109,5 @@ def get_events(url: str):
     b.open_timetable(url)
     events_elems = b.get_events_elems()
     events = [b.extract_event(e) for e in events_elems]
-    b.finish()
     return events
 
