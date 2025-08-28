@@ -24,6 +24,7 @@ class Brwsr:
         print("Initializing driver with your REAL Chrome profile...")
         print("!!! Make sure all other Chrome windows are closed !!!")
         self.driver = uc.Chrome(options=chrome_options)
+
     def finish(self):
         if self.driver:
             self.driver.quit()
@@ -42,6 +43,9 @@ class Brwsr:
         login_input = self.driver.find_element(By.XPATH, '//*[@id="username"]')
         password_input = self.driver.find_element(By.XPATH, '//*[@id="password"]')
         login_button = self.driver.find_element(By.XPATH, '//*[@id="submitBtnLogin"]') 
+
+        remember_me_button = self.driver.find_element(By.XPATH, '//*[@id="rememberMe"]')
+        remember_me_button.click()
 
         (login, password) = get_login_data()
 
