@@ -16,6 +16,8 @@ chrome_options = uc.ChromeOptions()
 chrome_options.add_argument(f'--user-data-dir={USER_DATA_PATH}')
 chrome_options.add_argument('--profile-directory=Default') 
 chrome_options.add_argument('--disable-blink-features=AutomationControlled')
+chrome_options.add_argument("--window-size=1920,1080")
+chrome_options.add_argument('--headless=new')
 
 driver = uc.Chrome(options=chrome_options)
 
